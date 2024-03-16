@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="forPeoplePage.css">
+</head>
+<body>
+<div class="top">
+    <h1 >People Page</h1>
+</div>
+<div th:each="person : ${people}">
+    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person}"></a>
+</div>
+<hr>
+<a  th:href="@{/people/new}">Create person</a>
+<hr>
+<a  href="/books">Books page</a>
+</body>
+</html>

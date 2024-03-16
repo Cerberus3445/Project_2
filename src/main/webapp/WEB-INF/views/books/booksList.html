@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="top">
+    <h1 >Books Page</h1>
+</div>
+<hr>
+<div th:each="book : ${books}">
+    <a  th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
+</div>
+
+<hr/>
+<a  href="/books/new">Add new book</a>
+<hr>
+<a href="/people">People page</a>
+
+<form th:method="GET" th:action="@{/books/search/{string}}" th:object="${searchBook}">
+    <input type="text" th:field="*{title}">
+    <input type="submit" value="find">
+</form>
+
+<div class="footer">
+    <div class="about">
+        <p >About us:</p>
+        <p >We have been working since 2000</p>
+        <p >Working hours: 10.00-18.00</p>
+    </div>
+</div>
+</body>
+</html>

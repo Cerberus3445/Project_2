@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${noFoundBooks}">
+    <h1>The books were not found</h1>
+</div>
+
+<div th:if="${foundBooks}">
+    <div th:each="book : ${foundBooks}">
+        <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
+    </div>
+</div>
+</body>
+</html>
