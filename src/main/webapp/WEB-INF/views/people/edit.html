@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Update person</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/forAll.css">
 </head>
 <body>
 <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">

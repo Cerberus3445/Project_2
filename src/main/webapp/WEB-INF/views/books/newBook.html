@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/forAll.css">
 </head>
 <body>
-
+<div class="slider-thumb"></div>
 <form th:method="POST" th:action="@{/books}" th:object="${book}">
     <label for="title">Enter title</label>
     <input type="text" th:field="*{title}" id="title">

@@ -18,7 +18,7 @@ public class Person {
     private int id;
     @NotNull
     @Size(min = 6, max = 50 ,message = "Name should be between 2 and 50 characters")
-    @Pattern(regexp = "\\w+\\s\\w+\\s\\w+", message = "Your address should be in this format: Name Middle Name Last Name ")
+    @Pattern(regexp = "\\w+\\s\\w+\\s\\w+", message = "Your name should be in this format: Name Middle Name Last Name ")
     @Column(name = "name")
     private String name;
     @Min(value = 0, message = "Age should be greater than 0")

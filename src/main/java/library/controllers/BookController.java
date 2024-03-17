@@ -29,15 +29,26 @@ public class BookController {
         this.bookDAO = bookDAO;
     }
 
+    @GetMapping("/withPagination")
+    public String BooksPageWithPagination(@RequestParam("page") int page, Model model){
+        model.addAttribute("book", new Book());
+        model.addAttribute("searchBook", new Book());
+        model.addAttribute("books", bookService.showAllBookWithPagination(page));
+        return "books/booksList";
+    }
     @GetMapping
     public String BooksPage(Model model){
         model.addAttribute("book", new Book());
         model.addAttribute("searchBook", new Book());
-        model.addAttribute("books", bookService.showAllBook());
+        model.addAttribute("books", bookService.showAll());
         return "books/booksList";
     }
-
-    @GetMapping("/search/{string}")
+    @GetMapping("/sort_by_year")
+    public String sortByYear(Model model){
+        model.addAttribute("sortedBooks", bookService.findByYear());
+        return "books/sortedBooks";
+    }
+    @GetMapping("/search/title")
     public String theSearchLine(@RequestParam("title") String string, Model model){
         if(bookService.theSearchLine(string).isEmpty()){
             model.addAttribute("noFoundBooks");

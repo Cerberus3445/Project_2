@@ -7,14 +7,8 @@
 </head>
 <body>
 <div class="slider-thumb"></div>
-<div th:if="${noFoundBooks}">
-    <h1>The books were not found</h1>
-</div>
-
-<div th:if="${foundBooks}">
-    <div th:each="book : ${foundBooks}">
-        <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
-    </div>
+<div th:each="book : ${sortedBooks}">
+    <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
 </div>
 </body>
 </html>

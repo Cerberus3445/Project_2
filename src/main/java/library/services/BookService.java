@@ -1,11 +1,10 @@
 package library.services;
 
-import jakarta.persistence.EntityManager;
 import library.models.Book;
-import library.models.Person;
 import library.repositories.BookRepository;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,9 +19,14 @@ public class BookService {
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
-
-    public List<Book> showAllBook(){
+    public List<Book> showAll(){
         return bookRepository.findAll();
+    }
+    public List<Book> showAllBookWithPagination(int page){
+        return bookRepository.findAll(PageRequest.of(page,1)).getContent();
+    }
+    public List<Book> findByYear(){
+        return bookRepository.findAll(Sort.by("year"));
     }
 
     public Book showOneBook(int id){
