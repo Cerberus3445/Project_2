@@ -8,46 +8,46 @@
 <body>
 <div class="slider-thumb"></div>
 <div class="top">
-    <h1 >About Book</h1>
+    <h1 style="color: white">About Book</h1>
 </div>
 <hr>
 <div class="all">
 <section class="main">
-<p th:text="${book.getTitle()}"></p>
-<p  th:text="${book.getAuthor()}"></p>
-<p  th:text="${book.getYear()}"></p>
-<a  th:href="@{/books/{id}/update(id=${book.getId()})}">Update</a>
+<p style="color: white" th:text="${book.getTitle()}"></p>
+<p style="color: white" th:text="${book.getAuthor()}"></p>
+<p style="color: white" th:text="${book.getYear()}"></p>
+<a style="color: white" th:href="@{/books/{id}/update(id=${book.getId()})}">Update</a>
 <hr>
 
 <div th:if="${owner}">
-    <span >The book is now at </span> <span th:text="${owner.getName()}"></span>
+    <span style="color: white" >The book is now at </span> <span style="color: white" th:text="${owner.getName()}"></span>
     <form th:method="PATCH" th:action="@{/books/{id}/release(id=${book.getId()})}">
-        <input  type="submit" value="Release the book">
+        <input style="color: #e52e71" type="submit" value="Release the book">
     </form>
 </div>
-
+    <p></p>
 <div th:if="${people}">
-    <span  >The book is free now. Who should I assign it to?</span>
+    <span style="color: white" >The book is free now. Assign this book?</span>
     <form th:method="POST" th:action="@{/books/{id}(id=${book.getId()})}">
-        <label for="peopleList">Appoint a person</label>
+        <label style="color: white" for="peopleList">Appoint a person</label>
         <select th:object="${person}" th:field="*{id}" id="peopleList">
-            <option th:each="persons : ${people}" th:value="${persons.getId()}" th:text="${persons}">
+            <option style="color: #e52e71" th:each="persons : ${people}" th:value="${persons.getId()}" th:text="${persons}">
             </option>
         </select>
-        <input type="submit" value="Appoint">
+        <input style="color: #e52e71" type="submit" value="Appoint">
     </form>
 </div>
-
+<p></p>
     <div th:if="${overdue}">
-        <h1 style="color: red">The book is overdue! </h1>
-        <span th:text="${book.getEndData()}"></span>
+        <h1 style="color: purple">The book is overdue! The book must be returned: </h1>
+        <h1 style="color: white" th:text="${book.getEndData()}"></h1>
     </div>
 
     <div th:if="${noOverdue}">
-        <h1 style="color: red">The book is no overdue </h1>
-        <span th:text="${book.getEndData()}"></span>
+        <h1 style="color: white">The book is no overdue. The book must be returned </h1>
+        <span style="color: white" th:text="${book.getEndData()}"></span>
     </div>
-
+    <p></p>
 <hr>
 
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
@@ -56,9 +56,9 @@
 </section>
 <footer class="footer">
     <div class="about">
-        <p  >About us:</p>
-        <p  >We have been working since 2000</p>
-        <p  >Working hours: 10.00-18.00</p>
+        <p style="color: white" >About us:</p>
+        <p style="color: white" >We have been working since 2000</p>
+        <p style="color: white" >Working hours: 10.00-18.00</p>
     </div>
 </footer>
 

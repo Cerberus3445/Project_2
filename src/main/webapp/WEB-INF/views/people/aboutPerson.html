@@ -9,26 +9,35 @@
 <div class="top">
     <h1 style="color: white">About Person</h1>
 </div>
+<div class="slider-thumb"></div>
 <hr>
-<p  th:text="${person.getName()}"></p>
-<p th:text="${person.getAge()}"></p>
-<a  th:href="@{/people/{id}/update(id=${person.getId()})}">Update user</a>
+<p style="color: white" th:text="${person.getName()}"></p>
+<p style="color: white" th:text="${person.getAge()}"></p>
+<a style="color: white" th:href="@{/people/{id}/update(id=${person.getId()})}">Update user</a>
 <hr>
-<p>Person books:</p>
+<p style="color: white">Person books:</p>
 
 <div th:if="${!books.isEmpty()}">
     <div th:each="book : ${books}">
-        <p th:text="${book}"></p>
+        <a th:href="@{/books/{id}(id=${book.getId()})}" style="color: white" th:text="${book}"></a>
     </div>
 </div>
 
 <div th:if="${books.isEmpty()}">
-    <span>The user doesn't have books</span>
+    <span style="color: white">The user doesn't have books</span>
 </div>
-
+<div th:if="${overdueBooks}">
+    <h1 style="color: white">Overdue books:</h1>
+    <div th:each="books : ${overdueBooks}">
+        <a th:href="@{/books/{id}(id=${books.getId()})}" style="color: white" th:text="${books}"></a>
+    </div>
+</div>
+<div th:if="${noOverdueBooks}">
+    <h1 style="color: white">No overdue books</h1>
+</div>
 <hr>
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
-    <input type="submit" value="Delete">
+    <input style="color: #e52e71" type="submit"  value="Delete">
 </form>
 </body>
 </html>

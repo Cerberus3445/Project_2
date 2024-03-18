@@ -8,13 +8,13 @@
 <body>
 <div class="slider-thumb"></div>
 <div class="top">
-    <h1 >Books Page</h1>
+    <h1 style="color: white">Books Page</h1>
 </div>
 <hr>
 
     <form style="color: white" th:method="GET" th:action="@{/books/search/title}" th:object="${searchBook}">
         <input type="text" th:field="*{title}">
-        <input type="submit" value="find">
+        <input style="color: #e52e71" type="submit" value="find">
     </form>
 
 <hr>
@@ -28,10 +28,10 @@
     </div>
 
 <hr/>
-<a style="color: white"  href="/books/new">Add new book</a>
+<a style="color: white" href="/books/new">Add new book</a>
 <hr>
 
-<a style="color: white"  href="/people">People page</a>
+<a style="color: white" href="/people">People page</a>
 <hr>
 
 <div class="footer">

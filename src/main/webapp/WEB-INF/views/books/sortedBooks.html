@@ -8,7 +8,7 @@
 <body>
 <div class="slider-thumb"></div>
 <div th:each="book : ${sortedBooks}">
-    <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
+    <a style="color: white" th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
 </div>
 </body>
 </html>

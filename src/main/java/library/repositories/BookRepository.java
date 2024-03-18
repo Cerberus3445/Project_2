@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
-    List<Book> findByTitleStartingWith(String bookTitle);
+    List<Book> findByTitleIgnoreCaseStartingWith(String bookTitle);
 }

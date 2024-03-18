@@ -6,16 +6,17 @@
     <link rel="stylesheet" type="text/css" href="../../styles/forAll.css">
 </head>
 <body>
+<div class="slider-thumb"></div>
 <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
-    <label  for="name">Enter first name, middle name, last name</label>
-    <input stype="text" th:field="*{name}" id="name">
-    <p  th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    <label style="color: white" for="name">Enter first name, middle name, last name</label>
+    <input style="color: #e52e71" stype="text" th:field="*{name}" id="name">
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     <br>
-    <label  for="age">Enter age</label>
-    <input type="text" th:field="*{age}" id="age">
-    <p  th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+    <label style="color: white" for="age">Enter age</label>
+    <input style="color: #e52e71" type="text" th:field="*{age}" id="age">
+    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
     <br>
-    <input  type="submit" value="Update">
+    <input style="color: #e52e71" type="submit" value="Update">
 </form>
 </body>
 </html>

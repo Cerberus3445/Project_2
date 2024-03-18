@@ -7,18 +7,19 @@
 </head>
 <body>
 <div class="top">
-    <h1 >Create new Person</h1>
+    <h1 style="color: white">Create new Person</h1>
 </div>
+<div class="slider-thumb"></div>
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
-    <label  for="name">Enter first name, middle name, last name</label>
-    <input  type="text" th:field="*{name}" id="name">
+    <label style="color: white" for="name">Enter first name, middle name, last name</label>
+    <input style="color: #e52e71" type="text" th:field="*{name}" id="name">
     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     <br>
-    <label  for="age">Enter age</label>
-    <input  type="text" th:field="*{age}" id="age">
+    <label style="color: white" for="age">Enter age</label>
+    <input style="color: #e52e71" type="text" th:field="*{age}" id="age">
     <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
     <br>
-    <input type="submit" value="Create">
+    <input style="color: #e52e71" type="submit" value="Create">
 </form>
 
 </body>

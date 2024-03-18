@@ -7,13 +7,19 @@
 </head>
 <body>
 <div class="slider-thumb"></div>
+
+<form style="color: white" th:method="GET" th:action="@{/books/search/title}" th:object="${searchBook}">
+    <input type="text" th:field="*{title}">
+    <input style="color: #e52e71" type="submit" value="find">
+</form>
+
 <div th:if="${noFoundBooks}">
-    <h1>The books were not found</h1>
+    <h1 style="color: white" >The books were not found</h1>
 </div>
 
 <div th:if="${foundBooks}">
     <div th:each="book : ${foundBooks}">
-        <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
+        <a style="color: white" th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book}"></a>
     </div>
 </div>
 </body>

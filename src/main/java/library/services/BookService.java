@@ -33,7 +33,7 @@ public class BookService {
         return bookRepository.findById(id).orElse(null);
     }
     public List<Book> theSearchLine(String bookTitle){
-        return bookRepository.findByTitleStartingWith(bookTitle);
+        return bookRepository.findByTitleIgnoreCaseStartingWith(bookTitle);
     }
     @Transactional
     public void createBook(Book book){

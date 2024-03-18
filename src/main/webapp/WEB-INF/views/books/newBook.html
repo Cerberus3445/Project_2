@@ -8,19 +8,19 @@
 <body>
 <div class="slider-thumb"></div>
 <form th:method="POST" th:action="@{/books}" th:object="${book}">
-    <label for="title">Enter title</label>
-    <input type="text" th:field="*{title}" id="title">
+    <label style="color: white" for="title">Enter title</label>
+    <input style="color: #e52e71" type="text" th:field="*{title}" id="title">
     <p  th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
     <br>
-    <label  for="author">Enter author</label>
-    <input type="text" th:field="*{author}" id="author">
+    <label style="color: white" for="author">Enter author</label>
+    <input style="color: #e52e71" type="text" th:field="*{author}" id="author">
     <p  th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></p>
     <br>
-    <label  for="year">Enter date of writing</label>
-    <input  type="text" th:field="*{year}" id="year">
-    <p  th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></p>
+    <label style="color: white" for="year">Enter date of writing</label>
+    <input  style="color: #e52e71" type="text" th:field="*{year}" id="year">
+    <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></p>
     <br>
-    <input  type="submit" value="Create">
+    <input style="color: #e52e71" type="submit" value="Create">
 </form>
 </body>
 </html>

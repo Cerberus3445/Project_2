@@ -6,15 +6,16 @@
     <link rel="stylesheet" type="text/css" href="../../styles/forAll.css">
 </head>
 <body>
+<div class="slider-thumb"></div>
 <div class="top">
-    <h1 >People Page</h1>
+    <h1 style="color: white" >People Page</h1>
 </div>
 <div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person}"></a>
+    <a style="color: white" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person}"></a>
 </div>
 <hr>
-<a  th:href="@{/people/new}">Create person</a>
+<a style="color: white" th:href="@{/people/new}">Create person</a>
 <hr>
-<a  href="/books">Books page</a>
+<a style="color: white" href="/books">Books page</a>
 </body>
 </html>

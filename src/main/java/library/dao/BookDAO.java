@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -69,5 +71,18 @@ public class BookDAO {
         } else {
             return false;
         }
+    }
+    @Transactional(readOnly = true)
+    public List<Book> overdueBooks(int id){
+        List<Book> overdueBooks = new ArrayList<>();
+        Date date = new Date();
+        Session session = entityManager.unwrap(Session.class);
+        Person person = session.get(Person.class, id);
+        for(Book book : person.getBookList()){
+            if(date.after(book.getEndData())){
+                overdueBooks.add(book);
+            }
+        }
+        return overdueBooks;
     }
 }
