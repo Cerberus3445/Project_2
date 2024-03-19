@@ -49,7 +49,7 @@ public class BookController {
         return "books/sortedBooks";
     }
     @GetMapping("/search/title")
-    public String theSearchLine(@RequestParam("title") String string, Model model){
+    public String theSearchLine(@RequestParam("query") String string, Model model){
         model.addAttribute("searchBook", new Book());
         if(bookService.theSearchLine(string).isEmpty()){
             model.addAttribute("noFoundBooks", bookService.theSearchLine(string));

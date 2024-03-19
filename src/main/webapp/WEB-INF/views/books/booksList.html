@@ -12,8 +12,8 @@
 </div>
 <hr>
 
-    <form style="color: white" th:method="GET" th:action="@{/books/search/title}" th:object="${searchBook}">
-        <input type="text" th:field="*{title}">
+    <form style="color: white" th:method="GET" th:action="@{/books/search/title}">
+        <input type="text" id="query" name="query">
         <input style="color: #e52e71" type="submit" value="find">
     </form>
 
