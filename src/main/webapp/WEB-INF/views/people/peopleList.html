@@ -10,6 +10,11 @@
 <div class="top">
     <h1 style="color: white" >People Page</h1>
 </div>
+<form th:method="GET" th:action="@{/people/find-people}">
+    <label for="query">Enter person name</label>
+    <input type="text" name="query" id="query">
+    <input type="submit" value="Find">
+</form>
 <div th:each="person : ${people}">
     <a style="color: white" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person}"></a>
 </div>

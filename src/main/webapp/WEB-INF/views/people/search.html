@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/forAll.css">
+</head>
+<body>
+<div th:if="${notFoundPeopleByFilter}">
+    <span th:text="${notFoundPeopleByFilter}"></span> <span>not found</span>
+</div>
+
+<div th:if="${filter}">
+    <div th:each="person : ${filter}">
+        <a style="color: white" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person}"></a>
+    </div>
+</div>
+</body>
+</html>

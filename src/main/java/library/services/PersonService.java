@@ -25,17 +25,24 @@ public class PersonService {
     public Person showOnePerson(int id){
         return personRepository.findById(id).orElse(null);
     }
+
     @Transactional
     public void createPerson(Person person){
         personRepository.save(person);
     }
+
     @Transactional
     public void updatePerson(int id, Person updatePerson){
         updatePerson.setId(id);
         personRepository.save(updatePerson);
     }
+
     @Transactional
     public void deletePerson(int id){
         personRepository.deleteById(id);
+    }
+
+    public List<Person> findPeopleByFilter(String filter){
+        return personRepository.findByNameEqualsIgnoreCase(filter);
     }
 }

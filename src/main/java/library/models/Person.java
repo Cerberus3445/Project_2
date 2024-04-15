@@ -12,18 +12,22 @@ import java.util.Objects;
 @Entity
 @Table(name = "Person")
 public class Person {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NotNull
     @Size(min = 6, max = 50 ,message = "Name should be between 2 and 50 characters")
     @Pattern(regexp = "\\w+\\s\\w+\\s\\w+", message = "Your name should be in this format: Name Middle Name Last Name ")
     @Column(name = "name")
     private String name;
+
     @Min(value = 0, message = "Age should be greater than 0")
     @Column(name = "age")
     private int age;
+
     @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     private List<Book> bookList;
 
