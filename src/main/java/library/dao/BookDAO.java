@@ -31,6 +31,7 @@ public class BookDAO {
         book1.setPerson(person);
         person.getBookList().add(book1);
     }
+
     @Transactional
     public void releaseBook(int book_id){
         Session session = entityManager.unwrap(Session.class);
@@ -41,18 +42,21 @@ public class BookDAO {
         person.getBookList().remove(book);
         book.setPerson(null);
     }
+
     @Transactional(readOnly = true)
     public Optional<Person> getBookOwner(int id) {
         Session session = entityManager.unwrap(Session.class);
         Book book = session.createQuery("from Book b where b.id=:bookId", Book.class).setParameter("bookId", id).getSingleResult();
         return Optional.ofNullable(book.getPerson());
     }
+
     @Transactional(readOnly = true)
     public List<Book> showPersonBook(int id){
         Session session = entityManager.unwrap(Session.class);
         List<Book> bookList = session.createQuery("select p.bookList from Person p where p.id=:personId", Book.class).setParameter("personId",id).getResultList();
         return bookList;
     }
+
     public Date endData(Date date){
         int year = date.getYear();
         int month = date.getMonth();
@@ -63,6 +67,7 @@ public class BookDAO {
         Date date1 = new Date(year, month, dat, hours, min, sec);
         return date1;
     }
+
     @Transactional
     public boolean checkingForOverdueBook(Book book){
         Date date = new Date();
@@ -72,6 +77,7 @@ public class BookDAO {
             return false;
         }
     }
+
     @Transactional(readOnly = true)
     public List<Book> overdueBooks(int id){
         List<Book> overdueBooks = new ArrayList<>();

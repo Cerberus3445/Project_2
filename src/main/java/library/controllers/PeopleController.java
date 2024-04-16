@@ -35,14 +35,19 @@ public class PeopleController {
 
     @GetMapping("/{id}")
     public String aboutPerson(Model model, @PathVariable("id") int id){
-        if(!bookDAO.overdueBooks(id).isEmpty()){
-            model.addAttribute("overdueBooks", bookDAO.overdueBooks(id));
-        } else {
-            model.addAttribute("noOverdueBooks", bookDAO.overdueBooks(id));
+        try {
+            if(!bookDAO.overdueBooks(id).isEmpty()){
+                model.addAttribute("overdueBooks", bookDAO.overdueBooks(id));
+            } else {
+                model.addAttribute("noOverdueBooks", bookDAO.overdueBooks(id));
+            }
+            model.addAttribute("books", bookDAO.showPersonBook(id));
+            model.addAttribute("person", personService.showOnePerson(id));
+            return "people/aboutPerson";
         }
-        model.addAttribute("books", bookDAO.showPersonBook(id));
-        model.addAttribute("person", personService.showOnePerson(id));
-        return "people/aboutPerson";
+        catch (Exception e){
+            return "errors/404";
+        }
     }
 
     @GetMapping("/new")
