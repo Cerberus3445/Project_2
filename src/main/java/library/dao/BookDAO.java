@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Transactional
 public class BookDAO {
     private final EntityManager entityManager;
 
@@ -21,7 +22,6 @@ public class BookDAO {
         this.entityManager = entityManager;
     }
 
-    @Transactional
     public void appointBook(int personId, int bookId){
         Session session = entityManager.unwrap(Session.class);
         Book book1 = session.get(Book.class, bookId);
@@ -32,7 +32,6 @@ public class BookDAO {
         person.getBookList().add(book1);
     }
 
-    @Transactional
     public void releaseBook(int book_id){
         Session session = entityManager.unwrap(Session.class);
         Book book = session.get(Book.class, book_id);
@@ -43,14 +42,14 @@ public class BookDAO {
         book.setPerson(null);
     }
 
-    @Transactional(readOnly = true)
+
     public Optional<Person> getBookOwner(int id) {
         Session session = entityManager.unwrap(Session.class);
         Book book = session.createQuery("from Book b where b.id=:bookId", Book.class).setParameter("bookId", id).getSingleResult();
         return Optional.ofNullable(book.getPerson());
     }
 
-    @Transactional(readOnly = true)
+
     public List<Book> showPersonBook(int id){
         Session session = entityManager.unwrap(Session.class);
         List<Book> bookList = session.createQuery("select p.bookList from Person p where p.id=:personId", Book.class).setParameter("personId",id).getResultList();
@@ -68,7 +67,7 @@ public class BookDAO {
         return date1;
     }
 
-    @Transactional
+
     public boolean checkingForOverdueBook(Book book){
         Date date = new Date();
         if(date.after(book.getEndData())){
@@ -78,7 +77,7 @@ public class BookDAO {
         }
     }
 
-    @Transactional(readOnly = true)
+
     public List<Book> overdueBooks(int id){
         List<Book> overdueBooks = new ArrayList<>();
         Date date = new Date();

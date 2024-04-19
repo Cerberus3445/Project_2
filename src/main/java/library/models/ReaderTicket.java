@@ -24,4 +24,24 @@ public class ReaderTicket {
     @Column(name = "end_data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date endData;
+
+    public ReaderTicket(Person person, Date startData, Date endData) {
+        this.person = person;
+        this.startData = startData;
+        this.endData = endData;
+    }
+
+    public ReaderTicket(){
+
+    }
+
+    @Override
+    public String toString() {
+        return "ReaderTicket{" +
+                "id=" + id +
+                ", person=" + person +
+                ", startData=" + startData +
+                ", endData=" + endData +
+                '}';
+    }
 }
